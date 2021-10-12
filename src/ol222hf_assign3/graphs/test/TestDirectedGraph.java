@@ -22,7 +22,7 @@ import org.junit.Test;
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 
-import ol222hf_assign3.*; // Replace with a package (named after your LNU user name, e.g. na222fx) that contains your implementation of the DirectedGraph or other used interfaces / abstract classes;
+import ol222hf_assign3.ol222hf.*; // Replace with a package (named after your LNU user name, e.g. na222fx) that contains your implementation of the DirectedGraph or other used interfaces / abstract classes;
 
 public class TestDirectedGraph  {
 	
@@ -343,12 +343,12 @@ public class TestDirectedGraph  {
 		
 	}
 	
-	@Test
-	public void testGML() throws Exception {
-		DirectedGraph<Integer> cyclic = generator.getSmallCyclic();
-		GML<Integer> gml = new MyGML<Integer>(cyclic);
-		gml.dumpGML();
-	}
+	// @Test
+	// public void testGML() throws Exception {
+	// 	DirectedGraph<Integer> cyclic = generator.getSmallCyclic();
+	// 	GML<Integer> gml = new MyGML<Integer>(cyclic);
+	// 	gml.dumpGML();
+	// }
 
 	
 	/* ********************************************************

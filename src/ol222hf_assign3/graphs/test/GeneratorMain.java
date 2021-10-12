@@ -8,7 +8,7 @@ import ol222hf_assign3.graphs.GML;
 
 import java.io.File;
 
-import ol222hf_assign3.*; // Replace with a package (named after your LNU user name, e.g. na222fx) that contains your implementation of the DirectedGraph and GML interface/abstract class*;
+import ol222hf_assign3.ol222hf.*; // Replace with a package (named after your LNU user name, e.g. na222fx) that contains your implementation of the DirectedGraph and GML interface/abstract class*;
 
 /**
  * A simple program to test and print graphs
@@ -73,7 +73,7 @@ public class GeneratorMain {
 	private static void dump(DirectedGraph<Integer> dg, String file_name) throws Exception{
 		File f = new File(home,file_name);
 		
-		GML<Integer> gml = new MyGML<Integer>(dg);
+		GML<Integer> gml = new MyGML<Integer>(dg); 
 		gml.dumpGML(f);
 	}
 }

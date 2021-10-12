@@ -1,80 +1,74 @@
 package ol222hf_assign3.ol222hf;
 
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import ol222hf_assign3.graphs.*;
 
 public class MyNode<E> extends Node<E> {
+    private Set<Node<E>> preds;
+    private Set<Node<E>> succs;
 
     protected MyNode(E item) {
         super(item);
-        //TODO Auto-generated constructor stub
+        preds = new HashSet<Node<E>>();
+        succs = new HashSet<Node<E>>();
     }
 
     @Override
     public boolean hasSucc(Node<E> node) {
-        // TODO Auto-generated method stub
-        return false;
+        return succs.contains(node);
     }
 
     @Override
     public int outDegree() {
-        // TODO Auto-generated method stub
-        return 0;
+        return succs.size();
     }
 
     @Override
     public Iterator<Node<E>> succsOf() {
-        // TODO Auto-generated method stub
-        return null;
+        return succs.iterator();
     }
 
     @Override
     public boolean hasPred(Node<E> node) {
-        // TODO Auto-generated method stub
-        return false;
+        return preds.contains(node);
     }
 
     @Override
     public int inDegree() {
-        // TODO Auto-generated method stub
-        return 0;
+        return preds.size();
     }
 
     @Override
     public Iterator<Node<E>> predsOf() {
-        // TODO Auto-generated method stub
-        return null;
+        return preds.iterator();
     }
 
     @Override
     protected void addSucc(Node<E> succ) {
-        // TODO Auto-generated method stub
-        
+        succs.add(succ);
     }
 
     @Override
     protected void removeSucc(Node<E> succ) {
-        // TODO Auto-generated method stub
-        
+        succs.remove(succ);
     }
 
     @Override
     protected void addPred(Node<E> pred) {
-        // TODO Auto-generated method stub
-        
+        preds.add(pred);
     }
 
     @Override
     protected void removePred(Node<E> pred) {
-        // TODO Auto-generated method stub
-        
+        preds.remove(pred);
     }
 
     @Override
     protected void disconnect() {
-        // TODO Auto-generated method stub
-        
+        succs = new HashSet<Node<E>>();
+        preds = new HashSet<Node<E>>();
     }
-    
 }

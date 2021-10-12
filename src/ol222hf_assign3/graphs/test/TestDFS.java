@@ -24,7 +24,7 @@ import org.junit.Test;
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 
-import ol222hf_assign3.*; // Replace with a package (named after your LNU user name, e.g. na222fx) that contains your implementation of the DirectedGraph or other used interfaces / abstract classes;
+import ol222hf_assign3.ol222hf.*; // Replace with a package (named after your LNU user name, e.g. na222fx) that contains your implementation of the DirectedGraph or other used interfaces / abstract classes;
 /**
  * 
  * A  weakness in this case is that many tests
