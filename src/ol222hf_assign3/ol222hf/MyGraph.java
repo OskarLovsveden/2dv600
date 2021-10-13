@@ -40,8 +40,9 @@ public class MyGraph<E> implements DirectedGraph<E>{
     @Override
     public Node<E> getNodeFor(E item) {
         if (item == null) throw new RuntimeException("Item is null.");
-        if (itemToNode.get(item) == null) throw new RuntimeException("Node does not exit for this item.");
-        return itemToNode.get(item);
+        MyNode<E> node = itemToNode.get(item);
+        if (node == null) throw new RuntimeException("Node does not exit for this item.");
+        return node;
     }
     
     @Override
@@ -149,43 +150,29 @@ public class MyGraph<E> implements DirectedGraph<E>{
     public boolean containsEdgeFor(E from, E to) {
         if (from==null || to==null) throw new RuntimeException("Received null as input");
         
-        MyNode<E> source = (MyNode<E>) itemToNode.get(from);
-        MyNode<E> target = (MyNode<E>) itemToNode.get(to);
+        MyNode<E> source = itemToNode.get(from);
+        MyNode<E> target = itemToNode.get(to);
 
-        if (source != null || target != null)  {
-            if (source.hasPred(target) || source.hasSucc(target)) {
-                return true;
-            }
-        }
-        
-        return false;
+        if (source == null || target == null) return false;
+
+        return source.hasSucc(target);
     }
     
     @Override
     public boolean removeEdgeFor(E from, E to) {
-        if (containsEdgeFor(from, to)) {
+        if (!containsEdgeFor(from, to)) return false;
 
-            MyNode<E> source = (MyNode<E>) itemToNode.get(from);
-            MyNode<E> target = (MyNode<E>) itemToNode.get(to);
-            
-            if (source.hasPred(target)) {
-                source.removePred(target);
-                target.removeSucc(source);
-                if (source.isHead()) heads.add(source);
-                if (target.isTail()) tails.add(target);
-                return true;
-            }
-            
-            if (source.hasSucc(target)) {
-                source.removeSucc(target);
-                target.removePred(source);
-                if (source.isTail()) tails.add(source);
-                if (target.isHead()) heads.add(target);
-                return true;
-            }
-        }
+        MyNode<E> source = itemToNode.get(from);
+        MyNode<E> target = itemToNode.get(to);
 
-        return false;
+        if (source == null || target == null) return false;
+        
+        source.removeSucc(target);
+        target.removePred(source);
+        if (source.isTail()) tails.add(source);
+        if (target.isHead()) heads.add(target);
+        
+        return true;
     }
     
 }
