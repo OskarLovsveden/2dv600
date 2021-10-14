@@ -49,30 +49,58 @@ public class MyDFS<E> implements DFS<E> {
         while (heads.hasNext()) {
             Node<E> head = heads.next();
             
-            // if s not visited then
+            // if h not visited then
             if (!visited.contains(head)) {
-                // dfs(s)
+                // dfs(h)
                 innerDFS(visited, head);
             }
         }
 
         return visited;
     }
+    
+    private void innerPostOrder(List<Node<E>> visited, Node<E> node) {
+        // mark n as visited
+        visited.add(node);
+        // for each s ∈ succOf (n) do
+        Iterator<Node<E>> succs = node.succsOf();
+        while (succs.hasNext()) {
+            Node<E> succ = succs.next();
+            // if s not visited then
+            if (!visited.contains(succ)) {
+                // postOrder(s, poList)
+                innerPostOrder(visited, succ);
+            }
+        }
 
-    private void innerPostOrder() {
-        // make nice
+        // poList.add(n)
+        node.num = visited.size();
     }
-
+    
     @Override
     public List<Node<E>> postOrder(DirectedGraph<E> g, Node<E> root) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Node<E>> visited = new ArrayList<Node<E>>();
+        innerPostOrder(visited, root);
+        return visited;
     }
 
     @Override
     public List<Node<E>> postOrder(DirectedGraph<E> g) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Node<E>> visited = new ArrayList<Node<E>>();
+        
+        // for each h ∈ heads(n) do
+        Iterator<Node<E>> heads = g.heads();
+        while (heads.hasNext()) {
+            Node<E> head = heads.next();
+            
+            // if h not visited then
+            if (!visited.contains(head)) {
+                // innerPostOrder(h)
+                innerPostOrder(visited, head);
+            }
+        }
+
+        return visited;
     }
 
     @Override
