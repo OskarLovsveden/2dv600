@@ -1,6 +1,7 @@
 package ol222hf_assign3.ol222hf;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,23 +11,18 @@ import ol222hf_assign3.graphs.Node;
 
 public class MyDFS<E> implements DFS<E> {
 
-    private void innerDFS (List<Node<E>> visited, Node<E> node) {
-        // mark n as visited
+    private void innerDFS(List<Node<E>> visited, Node<E> node) {
         visited.add(node);
         node.num = visited.size();
 
-        // for each s ∈ succOf(n) do
         Iterator<Node<E>> succs = node.succsOf();
         while (succs.hasNext()) {
             Node<E> succ = succs.next();
 
-            // if s not visited then
             if (!visited.contains(succ)) {
-                // dfs(s)
                 innerDFS(visited, succ);
             }
         }
-        
     }
     
     @Override
@@ -44,14 +40,11 @@ public class MyDFS<E> implements DFS<E> {
     public List<Node<E>> dfs(DirectedGraph<E> graph) {
         List<Node<E>> visited = new ArrayList<Node<E>>();
         
-        // for each h ∈ heads(n) do
         Iterator<Node<E>> heads = graph.heads();
         while (heads.hasNext()) {
             Node<E> head = heads.next();
             
-            // if h not visited then
             if (!visited.contains(head)) {
-                // dfs(h)
                 innerDFS(visited, head);
             }
         }
@@ -59,66 +52,79 @@ public class MyDFS<E> implements DFS<E> {
         return visited;
     }
     
-    private void innerPostOrder(List<Node<E>> visited, Node<E> node) {
-        // mark n as visited
+    private void innerPostOrder(List<Node<E>> visited, List<Node<E>> poList, Node<E> node) {
         visited.add(node);
-        // for each s ∈ succOf (n) do
+
         Iterator<Node<E>> succs = node.succsOf();
         while (succs.hasNext()) {
             Node<E> succ = succs.next();
-            // if s not visited then
+            
             if (!visited.contains(succ)) {
-                // postOrder(s, poList)
-                innerPostOrder(visited, succ);
+                innerPostOrder(visited, poList, succ);
             }
         }
-
-        // poList.add(n)
-        node.num = visited.size();
+        
+        poList.add(node);
+        node.num = poList.size();
     }
     
     @Override
     public List<Node<E>> postOrder(DirectedGraph<E> g, Node<E> root) {
         List<Node<E>> visited = new ArrayList<Node<E>>();
-        innerPostOrder(visited, root);
-        return visited;
+        List<Node<E>> poList = new ArrayList<Node<E>>();
+        innerPostOrder(visited, poList, root);
+        return poList;
     }
-
+    
     @Override
     public List<Node<E>> postOrder(DirectedGraph<E> g) {
         List<Node<E>> visited = new ArrayList<Node<E>>();
+        List<Node<E>> poList = new ArrayList<Node<E>>();
         
-        // for each h ∈ heads(n) do
         Iterator<Node<E>> heads = g.heads();
         while (heads.hasNext()) {
             Node<E> head = heads.next();
             
-            // if h not visited then
             if (!visited.contains(head)) {
-                // innerPostOrder(h)
-                innerPostOrder(visited, head);
+                innerPostOrder(visited, poList, head);
+            }
+        }
+        
+        return poList;
+    }
+    
+    @Override
+    public List<Node<E>> postOrder(DirectedGraph<E> g, boolean attach_dfs_number) {
+        List<Node<E>> poList = postOrder(g);
+        if (attach_dfs_number) dfs(g);
+        return poList;
+    }
+    
+    @Override
+    public boolean isCyclic(DirectedGraph<E> graph) {
+        postOrder(graph);
+        
+        Iterator<Node<E>> nodes = graph.iterator();
+        while (nodes.hasNext()) {
+            Node<E> node = nodes.next();
+            
+            Iterator<Node<E>> succs = node.succsOf();
+            while (succs.hasNext()) {
+                Node<E> succ = succs.next();
+                if (node.num <= succ.num) {
+                    return true;
+                } 
             }
         }
 
-        return visited;
-    }
-
-    @Override
-    public List<Node<E>> postOrder(DirectedGraph<E> g, boolean attach_dfs_number) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean isCyclic(DirectedGraph<E> graph) {
-        // TODO Auto-generated method stub
         return false;
     }
-
+    
     @Override
     public List<Node<E>> topSort(DirectedGraph<E> graph) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Node<E>> poList = postOrder(graph);
+        Collections.reverse(poList);
+        return poList;
     }
     
 }
