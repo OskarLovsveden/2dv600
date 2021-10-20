@@ -1,10 +1,8 @@
 package ol222hf_assign3.ol222hf;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -17,37 +15,33 @@ public class MyConnectedComponents<E> implements ConnectedComponents<E> {
 
     @Override
     public Collection<Collection<Node<E>>> computeComponents(DirectedGraph<E> dg) {
-        List<Collection<Node<E>>> cc = new ArrayList<Collection<Node<E>>>();
-        List<Collection<Node<E>>> allDFS = new ArrayList<Collection<Node<E>>>();
+
+        Collection<Collection<Node<E>>> connectedComponents = new HashSet<Collection<Node<E>>>();
+        Collection<Collection<Node<E>>> removeList = new HashSet<Collection<Node<E>>>();
         Set<Node<E>> visited = new HashSet<Node<E>>();
-        
+
         for (Node<E> node : dg) {
-            List<Node<E>> dfs = MY_DFS.dfs(dg, node);
-            if (!visited.contains(node)) {
-                visited.addAll(dfs);
-                allDFS.add(dfs);
-            }
-        }
-
-        while(allDFS.size() != 0) {
-            Set<Node<E>> newCC = new HashSet<Node<E>>();
-            Iterator<Collection<Node<E>>> dfsItr = allDFS.iterator();
             
-            while (dfsItr.hasNext()) {
-                Collection<Node<E>> next = dfsItr.next();
+            if (!visited.contains(node)) {
+                List<Node<E>> dfsList = MY_DFS.dfs(dg, node);
+                visited.addAll(dfsList);
+                Set<Node<E>> newCC = new HashSet<Node<E>>(dfsList);
 
-                if (newCC.isEmpty()) {
-                    newCC.addAll(next);
-                    dfsItr.remove();
-                } else if (!Collections.disjoint(newCC, next)) {
-                    newCC.addAll(next);
-                    dfsItr.remove();
+                for (Collection<Node<E>> collection : connectedComponents) {
+                    if (!Collections.disjoint(collection, newCC)) {
+                        newCC.addAll(collection);
+                        removeList.add(collection);                       
+                    }
                 }
-            }
 
-            cc.add(newCC);
+                connectedComponents.add(newCC);  
+            }
         }
 
-        return cc;
+        for (Collection<Node<E>> toBeRemoved : removeList) {
+            connectedComponents.remove(toBeRemoved);
+        }
+
+        return connectedComponents;
     }
 }
