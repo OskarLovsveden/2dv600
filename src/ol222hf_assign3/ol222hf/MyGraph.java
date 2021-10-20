@@ -122,23 +122,22 @@ public class MyGraph<E> implements DirectedGraph<E>{
         if (item == null) throw new RuntimeException("Item is null.");
         if (itemToNode.get(item) == null) throw new RuntimeException("Node does not exist for this item.");
         
-        MyNode<E> node = (MyNode<E>) getNodeFor(item);
-        Iterator<Node<E>> succs = node.succsOf();
+        Node<E> node = getNodeFor(item);
 
+        Iterator<Node<E>> succs = node.succsOf();
         while (succs.hasNext()) {
             MyNode<E> succNode = (MyNode<E>) succs.next();
             succNode.removePred(node);
             
-            if (succNode.isTail()) tails.add(succNode);
+            if (succNode.isHead()) heads.add(succNode);
         }
 
         Iterator<Node<E>> preds = node.predsOf();
-
         while (preds.hasNext()) {
             MyNode<E> predNode = (MyNode<E>) preds.next();
             predNode.removeSucc(node);
             
-            if (predNode.isHead()) heads.add(predNode);
+            if (predNode.isTail()) tails.add(predNode);
         }
         
         itemToNode.remove(item);
