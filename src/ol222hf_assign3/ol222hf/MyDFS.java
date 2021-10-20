@@ -10,10 +10,10 @@ import ol222hf_assign3.graphs.DirectedGraph;
 import ol222hf_assign3.graphs.Node;
 
 public class MyDFS<E> implements DFS<E> {
-
-    private void innerDFS(List<Node<E>> visited, Node<E> node) {
+    private void innerDFS(MyAlgorithmCollections<Node<E>> visited, Node<E> node) {
+        visited.visit(node);
         visited.add(node);
-        node.num = visited.size();
+        node.num = visited.visitedSize();
 
         Iterator<Node<E>> succs = node.succsOf();
         while (succs.hasNext()) {
@@ -27,18 +27,14 @@ public class MyDFS<E> implements DFS<E> {
     
     @Override
     public List<Node<E>> dfs(DirectedGraph<E> graph, Node<E> root) {
-        List<Node<E>> visited = new ArrayList<Node<E>>();
-        
-        if (graph.containsNodeFor(root.item())) {
-            innerDFS(visited, root);
-        }
-        
-        return visited;
+        MyAlgorithmCollections<Node<E>> visited = new MyAlgorithmCollections<Node<E>>();
+        innerDFS(visited, root);
+        return visited.getResult();
     }
     
     @Override
     public List<Node<E>> dfs(DirectedGraph<E> graph) {
-        List<Node<E>> visited = new ArrayList<Node<E>>();
+        MyAlgorithmCollections<Node<E>> visited = new MyAlgorithmCollections<Node<E>>();
         
         Iterator<Node<E>> heads = graph.heads();
         while (heads.hasNext()) {
@@ -49,48 +45,46 @@ public class MyDFS<E> implements DFS<E> {
             }
         }
 
-        return visited;
+        return visited.getResult();
     }
     
-    private void innerPostOrder(List<Node<E>> visited, List<Node<E>> poList, Node<E> node) {
-        visited.add(node);
+    private void innerPostOrder(MyAlgorithmCollections<Node<E>> visited, Node<E> node) {
+        visited.visit(node);
 
         Iterator<Node<E>> succs = node.succsOf();
         while (succs.hasNext()) {
             Node<E> succ = succs.next();
             
             if (!visited.contains(succ)) {
-                innerPostOrder(visited, poList, succ);
+                innerPostOrder(visited, succ);
             }
         }
         
-        poList.add(node);
-        node.num = poList.size();
+        visited.add(node);
+        node.num = visited.resultSize();
     }
     
     @Override
     public List<Node<E>> postOrder(DirectedGraph<E> g, Node<E> root) {
-        List<Node<E>> visited = new ArrayList<Node<E>>();
-        List<Node<E>> poList = new ArrayList<Node<E>>();
-        innerPostOrder(visited, poList, root);
-        return poList;
+        MyAlgorithmCollections<Node<E>> visited = new MyAlgorithmCollections<Node<E>>();
+        innerPostOrder(visited, root);
+        return visited.getResult();
     }
     
     @Override
     public List<Node<E>> postOrder(DirectedGraph<E> g) {
-        List<Node<E>> visited = new ArrayList<Node<E>>();
-        List<Node<E>> poList = new ArrayList<Node<E>>();
+        MyAlgorithmCollections<Node<E>> visited = new MyAlgorithmCollections<Node<E>>();
         
         Iterator<Node<E>> heads = g.heads();
         while (heads.hasNext()) {
             Node<E> head = heads.next();
             
             if (!visited.contains(head)) {
-                innerPostOrder(visited, poList, head);
+                innerPostOrder(visited, head);
             }
         }
         
-        return poList;
+        return visited.getResult();
     }
     
     @Override
