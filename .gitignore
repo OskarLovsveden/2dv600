@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,java,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,java,windows
 
+### Report ###
+Assignment-3-Report.md
+
 ### Java ###
 # Compiled class file
 *.class
