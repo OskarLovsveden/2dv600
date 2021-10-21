@@ -1,3 +1,9 @@
+/**
+ * MyBFS.java
+ * Date: 21 oct 2021
+ * Author: Oskar Lövsveden
+ */
+
 package ol222hf_assign3.ol222hf;
 
 import java.util.ArrayList;
@@ -10,14 +16,20 @@ import ol222hf_assign3.graphs.BFS;
 import ol222hf_assign3.graphs.DirectedGraph;
 import ol222hf_assign3.graphs.Node;
 
-public class MyBFS<E> implements BFS<E>{
+public class MyBFS<E> implements BFS<E> {
 
+    /**
+     * Helper method to handle the BFS algorithm.
+     * 
+     * @param visited   a list containing the visited nodes.
+     * @param parentSet a set of nodes of which to run bfs on the children.
+     */
     private void innerBFS(List<Node<E>> visited, Set<Node<E>> parentSet) {
         Set<Node<E>> childSet = new HashSet<Node<E>>();
         for (Node<E> node : parentSet) {
-            
+
             Iterator<Node<E>> succs = node.succsOf();
-            while(succs.hasNext()) {
+            while (succs.hasNext()) {
 
                 Node<E> succ = succs.next();
 
@@ -28,7 +40,7 @@ public class MyBFS<E> implements BFS<E>{
                 }
             }
         }
-        
+
         if (!childSet.isEmpty()) {
             innerBFS(visited, childSet);
         }
@@ -38,16 +50,16 @@ public class MyBFS<E> implements BFS<E>{
     public List<Node<E>> bfs(DirectedGraph<E> graph, Node<E> root) {
         List<Node<E>> visited = new ArrayList<Node<E>>();
         Set<Node<E>> parentSet = new HashSet<Node<E>>();
-        
+
         visited.add(root);
         root.num = visited.size();
-        
+
         parentSet.add(root);
-        
+
         innerBFS(visited, parentSet);
         return visited;
     }
-    
+
     @Override
     public List<Node<E>> bfs(DirectedGraph<E> graph) {
         List<Node<E>> visited = new ArrayList<Node<E>>();

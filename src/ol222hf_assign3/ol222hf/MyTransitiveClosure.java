@@ -1,3 +1,9 @@
+/**
+ * MyTransitiveClosure.java
+ * Date: 21 oct 2021
+ * Author: Oskar Lövsveden
+ */
+
 package ol222hf_assign3.ol222hf;
 
 import java.util.Collection;
@@ -8,7 +14,7 @@ import ol222hf_assign3.graphs.DirectedGraph;
 import ol222hf_assign3.graphs.Node;
 import ol222hf_assign3.graphs.TransitiveClosure;
 
-public class MyTransitiveClosure<E> implements TransitiveClosure<E>{
+public class MyTransitiveClosure<E> implements TransitiveClosure<E> {
     @Override
     public Map<Node<E>, Collection<Node<E>>> computeClosure(DirectedGraph<E> dg) {
         MyDFS<E> dfs = new MyDFS<E>();

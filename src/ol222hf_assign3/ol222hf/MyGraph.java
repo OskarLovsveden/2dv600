@@ -1,3 +1,9 @@
+/**
+ * MyGraph.java
+ * Date: 21 oct 2021
+ * Author: Oskar Lövsveden
+ */
+
 package ol222hf_assign3.ol222hf;
 
 import java.util.ArrayList;
@@ -11,11 +17,12 @@ import java.util.Set;
 import ol222hf_assign3.graphs.DirectedGraph;
 import ol222hf_assign3.graphs.Node;
 
-public class MyGraph<E> implements DirectedGraph<E>{
+public class MyGraph<E> implements DirectedGraph<E> {
     private Map<E, MyNode<E>> itemToNode;
     private Set<Node<E>> heads;
     private Set<Node<E>> tails;
-    
+
+    /** Default constructor. */
     public MyGraph() {
         itemToNode = new HashMap<E, MyNode<E>>();
         heads = new HashSet<Node<E>>();
@@ -24,8 +31,9 @@ public class MyGraph<E> implements DirectedGraph<E>{
 
     @Override
     public Node<E> addNodeFor(E item) {
-        if (item == null) throw new RuntimeException("Item is null.");
-        
+        if (item == null)
+            throw new RuntimeException("Item is null.");
+
         if (itemToNode.containsKey(item)) {
             return getNodeFor(item);
         } else {
@@ -36,22 +44,25 @@ public class MyGraph<E> implements DirectedGraph<E>{
             return newNode;
         }
     }
-    
+
     @Override
     public Node<E> getNodeFor(E item) {
-        if (item == null) throw new RuntimeException("Item is null.");
+        if (item == null)
+            throw new RuntimeException("Item is null.");
         MyNode<E> node = itemToNode.get(item);
-        if (node == null) throw new RuntimeException("Node does not exit for this item.");
+        if (node == null)
+            throw new RuntimeException("Node does not exit for this item.");
         return node;
     }
-    
+
     @Override
     public boolean addEdgeFor(E from, E to) {
-        if (from==null || to==null) throw new RuntimeException("Received null as input");
-        
+        if (from == null || to == null)
+            throw new RuntimeException("Received null as input");
+
         MyNode<E> source = (MyNode<E>) addNodeFor(from);
         MyNode<E> target = (MyNode<E>) addNodeFor(to);
-        
+
         if (source.hasSucc(target)) {
             return false;
         } else {
@@ -62,116 +73,126 @@ public class MyGraph<E> implements DirectedGraph<E>{
             return true;
         }
     }
-    
+
     @Override
     public boolean containsNodeFor(E item) {
-        if (item == null) throw new RuntimeException("Item is null.");
+        if (item == null)
+            throw new RuntimeException("Item is null.");
         return (itemToNode.get(item) != null);
     }
-    
+
     @Override
     public int nodeCount() {
         return itemToNode.size();
     }
-    
+
     @Override
     public Iterator<Node<E>> iterator() {
         return new HashSet<Node<E>>(itemToNode.values()).iterator();
     }
-    
+
     @Override
     public Iterator<Node<E>> heads() {
         return heads.iterator();
     }
-    
+
     @Override
     public int headCount() {
         return heads.size();
     }
-    
+
     @Override
     public Iterator<Node<E>> tails() {
         return tails.iterator();
     }
-    
+
     @Override
     public int tailCount() {
         return tails.size();
     }
-    
+
     @Override
     public List<E> allItems() {
         return new ArrayList<E>(itemToNode.keySet());
     }
-    
+
     @Override
     public int edgeCount() {
         int counter = 0;
         Iterator<Node<E>> iterator = iterator();
-        
+
         while (iterator.hasNext()) {
             Node<E> node = iterator.next();
             counter = counter + node.outDegree();
         }
-        
+
         return counter;
     }
-    
+
     @Override
     public void removeNodeFor(E item) {
-        if (item == null) throw new RuntimeException("Item is null.");
-        if (itemToNode.get(item) == null) throw new RuntimeException("Node does not exist for this item.");
-        
+        if (item == null)
+            throw new RuntimeException("Item is null.");
+        if (itemToNode.get(item) == null)
+            throw new RuntimeException("Node does not exist for this item.");
+
         Node<E> node = getNodeFor(item);
 
         Iterator<Node<E>> succs = node.succsOf();
         while (succs.hasNext()) {
             MyNode<E> succNode = (MyNode<E>) succs.next();
             succNode.removePred(node);
-            
-            if (succNode.isHead()) heads.add(succNode);
+
+            if (succNode.isHead())
+                heads.add(succNode);
         }
 
         Iterator<Node<E>> preds = node.predsOf();
         while (preds.hasNext()) {
             MyNode<E> predNode = (MyNode<E>) preds.next();
             predNode.removeSucc(node);
-            
-            if (predNode.isTail()) tails.add(predNode);
+
+            if (predNode.isTail())
+                tails.add(predNode);
         }
-        
+
         itemToNode.remove(item);
         tails.remove(node);
         heads.remove(node);
     }
-    
+
     @Override
     public boolean containsEdgeFor(E from, E to) {
-        if (from==null || to==null) throw new RuntimeException("Received null as input");
-        
+        if (from == null || to == null)
+            throw new RuntimeException("Received null as input");
+
         MyNode<E> source = itemToNode.get(from);
         MyNode<E> target = itemToNode.get(to);
 
-        if (source == null || target == null) return false;
+        if (source == null || target == null)
+            return false;
 
         return source.hasSucc(target);
     }
-    
+
     @Override
     public boolean removeEdgeFor(E from, E to) {
-        if (!containsEdgeFor(from, to)) return false;
+        if (!containsEdgeFor(from, to))
+            return false;
 
         MyNode<E> source = itemToNode.get(from);
         MyNode<E> target = itemToNode.get(to);
 
-        if (source == null || target == null) return false;
-        
+        if (source == null || target == null)
+            return false;
+
         source.removeSucc(target);
         target.removePred(source);
-        if (source.isTail()) tails.add(source);
-        if (target.isHead()) heads.add(target);
-        
+        if (source.isTail())
+            tails.add(source);
+        if (target.isHead())
+            heads.add(target);
+
         return true;
     }
-    
 }

@@ -1,3 +1,9 @@
+/**
+ * MyNode.java
+ * Date: 21 oct 2021
+ * Author: Oskar Lövsveden
+ */
+
 package ol222hf_assign3.ol222hf;
 
 import java.util.HashSet;
@@ -10,6 +16,11 @@ public class MyNode<E> extends Node<E> {
     private Set<Node<E>> preds;
     private Set<Node<E>> succs;
 
+    /**
+     * MyNode constructor that takes an argument for the item.
+     * 
+     * @param item the item contained by the node.
+     */
     protected MyNode(E item) {
         super(item);
         preds = new HashSet<Node<E>>();
