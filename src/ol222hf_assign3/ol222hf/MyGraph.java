@@ -18,13 +18,13 @@ import ol222hf_assign3.graphs.DirectedGraph;
 import ol222hf_assign3.graphs.Node;
 
 public class MyGraph<E> implements DirectedGraph<E> {
-    private Map<E, MyNode<E>> itemToNode;
+    private Map<E, Node<E>> itemToNode;
     private Set<Node<E>> heads;
     private Set<Node<E>> tails;
 
     /** Default constructor. */
     public MyGraph() {
-        itemToNode = new HashMap<E, MyNode<E>>();
+        itemToNode = new HashMap<E, Node<E>>();
         heads = new HashSet<Node<E>>();
         tails = new HashSet<Node<E>>();
     }
@@ -37,7 +37,7 @@ public class MyGraph<E> implements DirectedGraph<E> {
         if (itemToNode.containsKey(item)) {
             return getNodeFor(item);
         } else {
-            MyNode<E> newNode = new MyNode<E>(item);
+            Node<E> newNode = new MyNode<E>(item);
             itemToNode.put(item, newNode);
             heads.add(newNode);
             tails.add(newNode);
@@ -49,7 +49,7 @@ public class MyGraph<E> implements DirectedGraph<E> {
     public Node<E> getNodeFor(E item) {
         if (item == null)
             throw new RuntimeException("Item is null.");
-        MyNode<E> node = itemToNode.get(item);
+        Node<E> node = itemToNode.get(item);
         if (node == null)
             throw new RuntimeException("Node does not exit for this item.");
         return node;
@@ -88,7 +88,7 @@ public class MyGraph<E> implements DirectedGraph<E> {
 
     @Override
     public Iterator<Node<E>> iterator() {
-        return new HashSet<Node<E>>(itemToNode.values()).iterator();
+        return itemToNode.values().iterator();
     }
 
     @Override
@@ -119,10 +119,8 @@ public class MyGraph<E> implements DirectedGraph<E> {
     @Override
     public int edgeCount() {
         int counter = 0;
-        Iterator<Node<E>> iterator = iterator();
 
-        while (iterator.hasNext()) {
-            Node<E> node = iterator.next();
+        for (Node<E> node : this) {
             counter = counter + node.outDegree();
         }
 
@@ -166,8 +164,8 @@ public class MyGraph<E> implements DirectedGraph<E> {
         if (from == null || to == null)
             throw new RuntimeException("Received null as input");
 
-        MyNode<E> source = itemToNode.get(from);
-        MyNode<E> target = itemToNode.get(to);
+        Node<E> source = itemToNode.get(from);
+        Node<E> target = itemToNode.get(to);
 
         if (source == null || target == null)
             return false;
@@ -180,8 +178,8 @@ public class MyGraph<E> implements DirectedGraph<E> {
         if (!containsEdgeFor(from, to))
             return false;
 
-        MyNode<E> source = itemToNode.get(from);
-        MyNode<E> target = itemToNode.get(to);
+        MyNode<E> source = (MyNode<E>) itemToNode.get(from);
+        MyNode<E> target = (MyNode<E>) itemToNode.get(to);
 
         if (source == null || target == null)
             return false;

@@ -117,9 +117,7 @@ public class MyDFS<E> implements DFS<E> {
     public boolean isCyclic(DirectedGraph<E> graph) {
         postOrder(graph);
 
-        Iterator<Node<E>> nodes = graph.iterator();
-        while (nodes.hasNext()) {
-            Node<E> node = nodes.next();
+        for (Node<E> node : graph) {
 
             Iterator<Node<E>> succs = node.succsOf();
             while (succs.hasNext()) {

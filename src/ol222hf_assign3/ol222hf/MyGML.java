@@ -29,9 +29,8 @@ public class MyGML<E> extends GML<E> {
         sbGraph.append("\tlabel \"Directed Graph\"\n");
 
         // iterate nodes
-        Iterator<Node<E>> nodes = graph.iterator();
-        while (nodes.hasNext()) {
-            Node<E> node = nodes.next();
+        for (Node<E> node : graph) {
+
             sbNodes.append("\tnode [\n");
             sbNodes.append("\t\tid " + node + "\n");
             sbNodes.append("\t\tlabel \"" + node + "\"\n");
