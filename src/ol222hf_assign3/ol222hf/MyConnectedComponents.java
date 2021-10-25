@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import ol222hf_assign3.graphs.ConnectedComponents;
@@ -41,13 +40,11 @@ public class MyConnectedComponents<E> implements ConnectedComponents<E> {
                 Set<Node<E>> newCC = new HashSet<Node<E>>(dfsList);
 
                 Iterator<Collection<Node<E>>> collections = connectedComponents.iterator();
-
                 while (collections.hasNext()) {
 
                     Collection<Node<E>> collection = collections.next();
 
                     if (!Collections.disjoint(collection, newCC)) {
-
                         newCC.addAll(collection);
                         collections.remove();
                     }

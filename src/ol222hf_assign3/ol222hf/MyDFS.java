@@ -40,6 +40,7 @@ public class MyDFS<E> implements DFS<E> {
     @Override
     public List<Node<E>> dfs(DirectedGraph<E> graph, Node<E> root) {
         MyAlgorithmCollections<Node<E>> visited = new MyAlgorithmCollections<Node<E>>();
+
         innerDFS(visited, root);
         return visited.getResult();
     }
