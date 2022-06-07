@@ -127,17 +127,17 @@ a + b * c
 
 (a + b) * c
 
-![ex4_b.drawio](C:\www\school\2DV600\src\ol222hf_assign4\ex4_b.drawio.png) 
+![ex4_b.drawio](./ex4_b.drawio.png) 
 
 ### c)
 
 a * a + b * b
 
-![ex4_c.drawio](C:\www\school\2DV600\src\ol222hf_assign4\ex4_c.drawio.png) 
+![ex4_c.drawio](./ex4_c.drawio.png) 
 
 ## Exercise 5
 
 Show that the grammar below is ambiguous:
 S → bS | Sb | a
 
-![ex5.drawio](C:\www\school\2DV600\src\ol222hf_assign4\ex5.drawio.png) 
+![ex5.drawio](./ex5.drawio.png) 
