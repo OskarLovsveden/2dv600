@@ -16,10 +16,10 @@ import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 
-/** 
+/**
  * Tests for the ArrayIntList and ArrayIntStack classes.
  * The testmethods' names explains what is tested.
- * Roughly follows this pattern: MethodName_OptionalTestDetails_ExpectedResult 
+ * Roughly follows this pattern: MethodName_OptionalTestDetails_ExpectedResult
  */
 public class CollectionTest {
     // add()
@@ -30,7 +30,7 @@ public class CollectionTest {
         SUT.add(input);
         assertEquals(1, SUT.size());
     }
-    
+
     @Test
     public void Add_TooManyItems_ShouldThrowOutOfMemoryError() {
         ArrayIntList SUT = new ArrayIntList();
@@ -62,7 +62,7 @@ public class CollectionTest {
         }
 
         assertEquals(start, SUT.get(start));
-    }  
+    }
 
     @Test
     public void Get_AtLastIndex_ShouldReturnFive() {
@@ -75,8 +75,8 @@ public class CollectionTest {
         }
 
         assertEquals(end, SUT.get(end));
-    }  
-    
+    }
+
     // addAt()
     @Test
     public void AddAt_OccupiedIndex_ShouldIncreaseSize() {
@@ -104,7 +104,7 @@ public class CollectionTest {
         assertEquals(SUT.indexOf(input), index);
         assertEquals(SUT.get(index), input);
     }
-    
+
     @Test
     public void AddAt_OutOfBoundsIndex_ShouldThrowIndexOutOfBoundsException() {
         ArrayIntList SUT = new ArrayIntList();
@@ -114,8 +114,7 @@ public class CollectionTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             SUT.addAt(input, outOfBoundsLowIndex);
         });
-        
-        
+
         for (int i = 0; i < 10; i++) {
             SUT.add(i);
         }
@@ -127,7 +126,7 @@ public class CollectionTest {
     }
 
     // remove()
-    @Test 
+    @Test
     public void Remove_AtIndexZeroWhenEmpty_ShouldThrowIndexOutOfBoundsException() {
         ArrayIntList SUT = new ArrayIntList();
         assertThrows(IndexOutOfBoundsException.class, () -> {
@@ -147,14 +146,14 @@ public class CollectionTest {
         SUT.remove(SUT.indexOf(integerToRemove));
         assertEquals(-1, SUT.indexOf(integerToRemove));
     }
-    
+
     // indexOf()
     @Test
     public void IndexOf_ShouldReturnMinusOne() {
         ArrayIntList SUT = new ArrayIntList();
         assertEquals(-1, SUT.indexOf(5));
     }
-    
+
     @Test
     public void IndexOf_ShouldReturnZero() {
         ArrayIntList SUT = new ArrayIntList();
@@ -162,14 +161,14 @@ public class CollectionTest {
         SUT.add(input);
         assertEquals(0, SUT.indexOf(input));
     }
-    
+
     // isEmpty()
     @Test
     public void IsEmpty_ArrayIntList_ShouldReturnTrue() {
         ArrayIntList SUT = new ArrayIntList();
         assertTrue(SUT.isEmpty());
     }
-    
+
     @Test
     public void IsEmpty_ArrayIntList_ShouldReturnFalse() {
         ArrayIntList SUT = new ArrayIntList();
@@ -183,7 +182,7 @@ public class CollectionTest {
         ArrayIntStack SUT = new ArrayIntStack();
         assertTrue(SUT.isEmpty());
     }
-    
+
     @Test
     public void IsEmpty_ArrayIntStack_ShouldReturnFalse() {
         ArrayIntStack SUT = new ArrayIntStack();
@@ -204,7 +203,7 @@ public class CollectionTest {
 
         assertEquals(items, SUT.size());
     }
-    
+
     @Test
     public void Size_ArrayIntStack_ShouldHaveSizeOfTen() {
         ArrayIntStack SUT = new ArrayIntStack();
@@ -225,7 +224,7 @@ public class CollectionTest {
         SUT.push(input);
         assertEquals(1, SUT.size());
     }
-    
+
     @Test
     public void Push_TooManyItems_ShouldThrowOutOfMemoryError() {
         ArrayIntStack SUT = new ArrayIntStack();
@@ -237,14 +236,14 @@ public class CollectionTest {
     }
 
     // pop()
-    @Test 
+    @Test
     public void Pop_WhenEmpty_ShouldThrowIndexOutOfBoundsException() {
         ArrayIntStack SUT = new ArrayIntStack();
         assertThrows(IndexOutOfBoundsException.class, () -> {
             SUT.pop();
         });
     }
-    
+
     @Test
     public void Pop_ShouldDecreaseSizeByOne() {
         ArrayIntStack SUT = new ArrayIntStack();
@@ -257,7 +256,7 @@ public class CollectionTest {
         SUT.pop();
         assertEquals(itemsToAdd - 1, SUT.size());
     }
-    
+
     @Test
     public void Pop_ShouldReturnTen() {
         ArrayIntStack SUT = new ArrayIntStack();
@@ -271,7 +270,7 @@ public class CollectionTest {
     }
 
     // peek()
-    @Test 
+    @Test
     public void Peek_WhenEmpty_ShouldThrowIndexOutOfBoundsException() {
         ArrayIntStack SUT = new ArrayIntStack();
         assertThrows(IndexOutOfBoundsException.class, () -> {

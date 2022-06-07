@@ -5,6 +5,7 @@
 */
 
 package ol222hf_assign1;
+
 import java.util.Scanner;
 
 /**
@@ -16,13 +17,13 @@ import java.util.Scanner;
 public class TimeDemo {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        
+
         try {
             // timeA
             System.out.print("Enter amount of seconds since midnight: ");
             int input = in.nextInt();
             Time timeA = new Time(input);
-    
+
             // Tick timeA 10 times
             for (int i = 0; i < 10; i++) {
                 timeA.tick();
@@ -49,7 +50,7 @@ public class TimeDemo {
 
             System.out.println("Add timeA(" + timeA + ") and timeB(" + timeB + "):");
             System.out.println(timeA.addTime(timeB) + "\n");
-            
+
             // timeC
             Time timeC = timeA.subtracTime(timeB);
             System.out.println("Subtract timeB(" + timeB + ") from timeA(" + timeA + "):");

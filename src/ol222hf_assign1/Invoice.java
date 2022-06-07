@@ -19,11 +19,12 @@ public class Invoice {
     private double pricePerItem;
 
     /**
-     * Invoice constructor setting partNumber, description, quantity and pricePerItem fields.
+     * Invoice constructor setting partNumber, description, quantity and
+     * pricePerItem fields.
      * 
-     * @param partNumber A String representing a partNumber.
-     * @param description A String representing a description.
-     * @param quantity An int representing the quantity of items in the invoice.
+     * @param partNumber   A String representing a partNumber.
+     * @param description  A String representing a description.
+     * @param quantity     An int representing the quantity of items in the invoice.
      * @param pricePerItem A double representing a price per item.
      */
     public Invoice(String partNumber, String description, int quantity, double pricePerItem) {

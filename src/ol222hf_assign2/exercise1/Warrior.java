@@ -14,33 +14,31 @@ public class Warrior extends AbilityUser {
     /**
      * Warrior constructor that takes a name and a level.
      * 
-     * @param name the warrior's name.
+     * @param name  the warrior's name.
      * @param level the warrior's level.
      */
-    public Warrior (String name, int level) {
+    public Warrior(String name, int level) {
         super(
-            name,
-            level,
-            ClassName.WARRIOR,
-            new Attributes(),
-            Set.<Proficiency>of(Proficiency.ATHLETICS, Proficiency.SURVIVAL)
-        );
+                name,
+                level,
+                ClassName.WARRIOR,
+                new Attributes(),
+                Set.<Proficiency>of(Proficiency.ATHLETICS, Proficiency.SURVIVAL));
     }
 
     /**
      * Warrior constructor that takes a name, level and attributes.
      * 
-     * @param name the warrior's name.
-     * @param level the warrior's level.
+     * @param name       the warrior's name.
+     * @param level      the warrior's level.
      * @param attributes the warrior's attributes.
      */
-    public Warrior (String name, int level, Attributes attributes) {
+    public Warrior(String name, int level, Attributes attributes) {
         super(
-            name,
-            level,
-            ClassName.WARRIOR,
-            attributes,
-            Set.<Proficiency>of(Proficiency.ATHLETICS, Proficiency.SURVIVAL)
-        );
+                name,
+                level,
+                ClassName.WARRIOR,
+                attributes,
+                Set.<Proficiency>of(Proficiency.ATHLETICS, Proficiency.SURVIVAL));
     }
 }

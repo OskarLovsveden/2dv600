@@ -12,7 +12,7 @@ public enum ClassName {
     WARRIOR(AttributeName.STRENGTH),
     ROGUE(AttributeName.AGILITY),
     CLERIC(AttributeName.WISDOM);
-    
+
     private AttributeName primaryAttribute;
 
     /**
@@ -20,7 +20,7 @@ public enum ClassName {
      * 
      * @param primaryAttribute the primary attribute for the classname.
      */
-    private ClassName (AttributeName primaryAttribute) {
+    private ClassName(AttributeName primaryAttribute) {
         this.primaryAttribute = primaryAttribute;
     }
 

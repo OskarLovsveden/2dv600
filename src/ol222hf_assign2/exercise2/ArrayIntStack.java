@@ -15,8 +15,9 @@ public class ArrayIntStack extends AbstractIntCollection implements IntStack {
      */
     @Override
     public void push(int n) {
-        
-        if (size() == values.length) resize();
+
+        if (size() == values.length)
+            resize();
         values[size++] = n;
     }
 
@@ -28,9 +29,10 @@ public class ArrayIntStack extends AbstractIntCollection implements IntStack {
      */
     @Override
     public int pop() throws IndexOutOfBoundsException {
-        
-        if (isEmpty()) throw new IndexOutOfBoundsException();
-        
+
+        if (isEmpty())
+            throw new IndexOutOfBoundsException();
+
         int value = values[size() - 1];
         values[size() - 1] = 0;
         size--;
@@ -46,8 +48,9 @@ public class ArrayIntStack extends AbstractIntCollection implements IntStack {
      */
     @Override
     public int peek() throws IndexOutOfBoundsException {
-        
-        if (isEmpty()) throw new IndexOutOfBoundsException();
+
+        if (isEmpty())
+            throw new IndexOutOfBoundsException();
         return values[size() - 1];
     }
 }

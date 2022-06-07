@@ -14,33 +14,31 @@ public class Rogue extends AbilityUser {
     /**
      * Rogue constructor that takes arguments for name and level.
      * 
-     * @param name the rogue's name.
+     * @param name  the rogue's name.
      * @param level the rogue's level.
      */
-    public Rogue (String name, int level) {
+    public Rogue(String name, int level) {
         super(
-            name,
-            level,
-            ClassName.ROGUE,
-            new Attributes(),
-            Set.<Proficiency>of(Proficiency.ACROBATICS, Proficiency.STEALTH)
-        );
+                name,
+                level,
+                ClassName.ROGUE,
+                new Attributes(),
+                Set.<Proficiency>of(Proficiency.ACROBATICS, Proficiency.STEALTH));
     }
-    
+
     /**
      * Rogue constructor that takes arguments for name, level and attributes.
      * 
-     * @param name the rogue's name.
-     * @param level the rogue's level.
+     * @param name       the rogue's name.
+     * @param level      the rogue's level.
      * @param attributes the rogue's attributes.
      */
-    public Rogue (String name, int level, Attributes attributes) {
+    public Rogue(String name, int level, Attributes attributes) {
         super(
-            name,
-            level,
-            ClassName.ROGUE,
-            attributes,
-            Set.<Proficiency>of(Proficiency.ACROBATICS, Proficiency.STEALTH)
-        );
+                name,
+                level,
+                ClassName.ROGUE,
+                attributes,
+                Set.<Proficiency>of(Proficiency.ACROBATICS, Proficiency.STEALTH));
     }
 }

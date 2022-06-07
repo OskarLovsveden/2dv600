@@ -29,8 +29,10 @@ public class Duel extends Combat {
     }
 
     /**
-     * Start the duel. A character/duelist wins by having higher level, higher primary attribute or the most known spells/abilities.
-     * If all three winconditions are equal between the two characters/duelists the duel ends in a tie.
+     * Start the duel. A character/duelist wins by having higher level, higher
+     * primary attribute or the most known spells/abilities.
+     * If all three winconditions are equal between the two characters/duelists the
+     * duel ends in a tie.
      */
     public void start() {
         boolean isOfSameLevel = isOfEqualStats(duelist1.getLevel(), duelist2.getLevel());

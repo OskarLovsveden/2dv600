@@ -5,10 +5,12 @@
 */
 
 package ol222hf_assign1;
+
 import java.util.Scanner;
 
 /**
- * Class Description: Reads a line of text from the keyboard and then prints the text with the following rules:
+ * Class Description: Reads a line of text from the keyboard and then prints the
+ * text with the following rules:
  * 1. Replaces every alphabetical letter with the next one in the alphabet.
  * 2. Capitalizes every vowel.
  * 3. Non-alphabetical letters/characters are unchanged.
@@ -22,10 +24,10 @@ public class TextProcessor {
     private static final int BIG_Z = 90;
 
     /** The starting point of the application */
-    public static void run () {
+    public static void run() {
         String text = promptText();
         String output = processText(text);
-        
+
         System.out.println("After Processing: " + output);
     }
 
@@ -76,7 +78,7 @@ public class TextProcessor {
     private static char processLetter(int charValue) {
         // Turn a/A to z/Z, or turn the character to next in alphabet.
         char character = isZ(charValue) ? (char) (charValue - ASCII_DECREASE) : (char) (charValue + 1);
-                        
+
         if (isLowerCaseVowel(character)) {
             character = Character.toUpperCase(character);
         }
@@ -90,7 +92,7 @@ public class TextProcessor {
      * @param charValue An int representing the ASCII value of a char.
      * @return true if the letter is z or Z, otherwise return false.
      */
-    private static boolean isZ (int charValue) {
+    private static boolean isZ(int charValue) {
         return charValue == SMALL_Z || charValue == BIG_Z;
     }
 
@@ -98,9 +100,10 @@ public class TextProcessor {
      * Checks if a letter is a lowercase vowel.
      * 
      * @param letter A char representing a letter.
-     * @return true if the letter is a lowercase a, e, i, o or u. Otherwise return false.
+     * @return true if the letter is a lowercase a, e, i, o or u. Otherwise return
+     *         false.
      */
-    private static boolean isLowerCaseVowel (char letter) {
+    private static boolean isLowerCaseVowel(char letter) {
         switch (letter) {
             case 'a':
             case 'e':

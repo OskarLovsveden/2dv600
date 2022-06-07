@@ -67,12 +67,12 @@ public class Party {
         return warriorAbilities + rogueAbilities;
     }
 
-    /** 
+    /**
      * Calculates average party level.
      * (sum of all party members levels divided by amount of party members)
      * 
      * @return the average party level.
-     * */
+     */
     public int getAveragePartyLevel() {
         int sum = 0;
 
@@ -102,9 +102,9 @@ public class Party {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Party:\n");
-        
+
         for (Character character : members) {
-            sb.append(character +  "\n");
+            sb.append(character + "\n");
         }
 
         return sb.toString();

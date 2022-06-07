@@ -13,33 +13,31 @@ public class Cleric extends SpellCaster {
     /**
      * Cleric constructor that takes name and a level.
      * 
-     * @param name the name of the cleric.
+     * @param name  the name of the cleric.
      * @param level the level of the cleric.
      */
-    public Cleric (String name, int level) {
+    public Cleric(String name, int level) {
         super(
-            name,
-            level,
-            ClassName.CLERIC,
-            new Attributes(),
-            Set.<School>of(School.DIVINATION, School.RESTORATION)
-        );
+                name,
+                level,
+                ClassName.CLERIC,
+                new Attributes(),
+                Set.<School>of(School.DIVINATION, School.RESTORATION));
     }
 
     /**
      * Cleric constructor that takes name, level and attributes.
      * 
-     * @param name the name of the cleric.
-     * @param level the level of the cleric.
+     * @param name       the name of the cleric.
+     * @param level      the level of the cleric.
      * @param attributes the attributes of the cleric.
      */
-    public Cleric (String name, int level, Attributes attributes) {
+    public Cleric(String name, int level, Attributes attributes) {
         super(
-            name,
-            level,
-            ClassName.CLERIC,
-            attributes,
-            Set.<School>of(School.DIVINATION, School.RESTORATION)
-        );
+                name,
+                level,
+                ClassName.CLERIC,
+                attributes,
+                Set.<School>of(School.DIVINATION, School.RESTORATION));
     }
 }

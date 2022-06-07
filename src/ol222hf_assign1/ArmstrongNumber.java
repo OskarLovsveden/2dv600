@@ -5,12 +5,14 @@
 */
 
 package ol222hf_assign1;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class Description: Read two integers and calculate all Armstrong Numbers between them.
+ * Class Description: Read two integers and calculate all Armstrong Numbers
+ * between them.
  * 
  * @version 1 02 Sept 2021
  * @author Oskar Lövsveden
@@ -18,24 +20,24 @@ import java.util.List;
 public class ArmstrongNumber {
     private static int startNumber;
     private static int endNumber;
-    
-    /** 
+
+    /**
      * The starting point of the application.
      * Repeats as long as user wants to do so.
-     * */
-    public static void run () {
+     */
+    public static void run() {
         Scanner in = new Scanner(System.in);
 
         do {
             promptStartAndEndNumbers(in);
             List<Integer> armstrongNumbers = getArmstrongNumbers();
             presentArmstrongNumbers(armstrongNumbers);
-            
+
         } while (repeatProgram(in));
 
         in.close();
     }
-    
+
     /**
      * Prompts the user for a starting and ending number to set the range.
      * 
@@ -44,11 +46,11 @@ public class ArmstrongNumber {
     private static void promptStartAndEndNumbers(Scanner in) {
         System.out.print("Enter the starting number of the range: ");
         startNumber = in.nextInt();
-        
+
         System.out.print("Enter the ending number of the range: ");
         endNumber = in.nextInt();
     }
-    
+
     /**
      * Iterates each number between the starting and ending number.
      * Valid Armstrong Numbers are added to a list of integers.
@@ -58,12 +60,12 @@ public class ArmstrongNumber {
     private static List<Integer> getArmstrongNumbers() {
         List<Integer> armstrongNumbers = new ArrayList<Integer>();
 
-        for(int i = startNumber; i <= endNumber; i++) {
+        for (int i = startNumber; i <= endNumber; i++) {
             int temp = i;
             int digit;
             int sum = 0;
 
-            while(temp > 0) {
+            while (temp > 0) {
                 // iterate each digit in the number
                 digit = temp % 10;
                 temp = temp / 10;
@@ -85,7 +87,7 @@ public class ArmstrongNumber {
      * 
      * @param armstrongNumbers A List<Integer> containing valid Armstrong Numbers.
      */
-    private static void presentArmstrongNumbers (List<Integer> armstrongNumbers) {
+    private static void presentArmstrongNumbers(List<Integer> armstrongNumbers) {
         System.out.println("The Armstrong numbers between the given range are:");
 
         for (Integer n : armstrongNumbers) {
@@ -102,7 +104,7 @@ public class ArmstrongNumber {
     private static boolean repeatProgram(Scanner in) {
         System.out.print("Do you want to repeat? (Y/N): ");
         String answer = in.next().trim();
-        
+
         return answer.equalsIgnoreCase("Y");
     }
 }

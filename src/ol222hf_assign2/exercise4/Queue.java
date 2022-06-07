@@ -23,7 +23,7 @@ public interface Queue<E> extends Iterable<E> {
      * @return true if the queue is empty, otherwise false.
      */
     boolean isEmpty();
-    
+
     /**
      * Add element at the of queue.
      * 
@@ -37,14 +37,14 @@ public interface Queue<E> extends Iterable<E> {
      * @return the first element.
      */
     E dequeue() throws NoSuchElementException;
-    
+
     /**
      * Return the first element.
      * 
      * @return the first element.
      */
     E first() throws NoSuchElementException;
-    
+
     /**
      * Return the last element.
      * 

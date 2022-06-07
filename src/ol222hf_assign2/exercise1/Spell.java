@@ -23,7 +23,7 @@ public enum Spell {
     /**
      * Spell constructor that takes an argument for name and school.
      * 
-     * @param name the spell's name.
+     * @param name   the spell's name.
      * @param school the spell's school.
      */
     private Spell(String name, School school) {

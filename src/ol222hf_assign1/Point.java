@@ -17,7 +17,7 @@ public class Point {
     private int y;
 
     /** Default constructor. */
-    public Point(){
+    public Point() {
         this(0, 0);
     }
 
@@ -34,6 +34,7 @@ public class Point {
 
     /**
      * Check if two points are equal to eachother, i.e same location.
+     * 
      * @param p A Point to compare against.
      * @return true if both points' x and y locations are equal, otherwise false.
      */
@@ -61,7 +62,7 @@ public class Point {
         this.x = this.x + x;
         this.y = this.y + y;
     }
-    
+
     /**
      * Move the point to a new location.
      * 

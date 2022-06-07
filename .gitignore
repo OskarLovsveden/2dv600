@@ -9,6 +9,7 @@ Assignment-3-Report.pdf
 ### Java ###
 # Compiled class file
 *.class
+bin/*
 
 # Log file
 *.log

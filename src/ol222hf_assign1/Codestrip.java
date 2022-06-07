@@ -5,15 +5,17 @@
 */
 
 package ol222hf_assign1;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Class Description: 
+ * Class Description:
  * Reads a javafile.
  * Prints lines of codes.
- * Counts lines of code, lines of comments and blank lines and prints the sum for each.
+ * Counts lines of code, lines of comments and blank lines and prints the sum
+ * for each.
  * 
  * @version 1 07 Sept 2021
  * @author Oskar Lövsveden
@@ -31,7 +33,7 @@ public class Codestrip {
     private static int linesOfComments = 0;
     private static int linesOfBlanks = 0;
 
-    /** 
+    /**
      * The starting point of the program.
      * Reads a javafile line for line and processes each line.
      * Ends by printing the result.
@@ -40,21 +42,21 @@ public class Codestrip {
         try {
             File myObj = new File(FILE_NAME);
             Scanner myReader = new Scanner(myObj);
-            
+
             while (myReader.hasNextLine()) {
                 String line = myReader.nextLine();
                 processLine(line);
             }
-            
+
             myReader.close();
 
             System.out.println("\n" + "Number of actual lines of code: " + linesOfCode);
             System.out.println("Number of blank lines removed: " + linesOfBlanks);
             System.out.println("Number of comments removed: " + linesOfComments);
-          } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
-          }
+        }
     }
 
     /**

@@ -31,13 +31,15 @@ public class Time {
     public Time() {
         this(0, 0, 0);
     }
-    
+
     /**
      * Class constructor that sets the time using hours, minutes and seconds.
      * 
-     * @param hours An int representing the amount of hours passed since midnight.
-     * @param minutes An int representing the amount of minutes passed during the current hour.
-     * @param seconds An int representing the amount of seconds passed during the current minute.
+     * @param hours   An int representing the amount of hours passed since midnight.
+     * @param minutes An int representing the amount of minutes passed during the
+     *                current hour.
+     * @param seconds An int representing the amount of seconds passed during the
+     *                current minute.
      */
     public Time(int hours, int minutes, int seconds) {
         this.setHours(hours);
@@ -48,7 +50,8 @@ public class Time {
     /**
      * Class constructor that sets the time using seconds.
      * 
-     * @param seconds An int representing the amount of seconds passed since midnight.
+     * @param seconds An int representing the amount of seconds passed since
+     *                midnight.
      */
     public Time(int seconds) {
         setClock(seconds);
@@ -61,8 +64,10 @@ public class Time {
     /**
      * Sets the seconds of the time.
      * 
-     * @param seconds An int representing the amount seconds passed during the current minute.
-     * @throws IllegalArgumentException if seconds is less than 0 or larger than {@value #SECONDS_LIMIT}.
+     * @param seconds An int representing the amount seconds passed during the
+     *                current minute.
+     * @throws IllegalArgumentException if seconds is less than 0 or larger than
+     *                                  {@value #SECONDS_LIMIT}.
      */
     public void setSeconds(int seconds) throws IllegalArgumentException {
         if (seconds < 0 || seconds > SECONDS_LIMIT) {
@@ -80,8 +85,10 @@ public class Time {
     /**
      * Sets the minutes of the time.
      * 
-     * @param minutes An int representing the amount of minutes passed during the current hour.
-     * @throws IllegalArgumentException if minutes is less than 0 or larger than {@value #MINUTES_LIMIT}.
+     * @param minutes An int representing the amount of minutes passed during the
+     *                current hour.
+     * @throws IllegalArgumentException if minutes is less than 0 or larger than
+     *                                  {@value #MINUTES_LIMIT}.
      */
     public void setMinutes(int minutes) throws IllegalArgumentException {
         if (minutes < 0 || minutes > MINUTES_LIMIT) {
@@ -100,7 +107,8 @@ public class Time {
      * Sets the hours of the time.
      * 
      * @param hours An int representing the amount of hours passed since midnight.
-     * @throws IllegalArgumentException if hours is less than 0 or larger than {@value #HOURS_LIMIT}.
+     * @throws IllegalArgumentException if hours is less than 0 or larger than
+     *                                  {@value #HOURS_LIMIT}.
      */
     public void setHours(int hours) throws IllegalArgumentException {
         if (hours < 0 || hours > HOURS_LIMIT) {
@@ -123,8 +131,10 @@ public class Time {
     /**
      * Sets the time/clock.
      * 
-     * @param seconds An int representing the amount of seconds that has passed since or is left until midnight.
-     * Positive values for time since midnight, and negative values for time until midnight.
+     * @param seconds An int representing the amount of seconds that has passed
+     *                since or is left until midnight.
+     *                Positive values for time since midnight, and negative values
+     *                for time until midnight.
      */
     public void setClock(int seconds) {
         if (seconds > SECONDS_IN_A_DAY_LIMIT) {
@@ -142,7 +152,7 @@ public class Time {
     public void tick() {
         setClock(toSeconds() + 1);
     }
-    
+
     /** Makes the time/clock tick 1 seconds backwards. */
     public void tickDown() {
         setClock(toSeconds() - 1);

@@ -16,7 +16,8 @@ public class Brawl extends Combat {
      * Class constructor for a brawl. Takes arguments for two parties.
      * 
      * @param party1 a Party that represents one of the sides fighting in the brawl.
-     * @param party2 a Party that represents the other of the sides fighting in the brawl.
+     * @param party2 a Party that represents the other of the sides fighting in the
+     *               brawl.
      */
     public Brawl(Party party1, Party party2) {
         super();
@@ -25,10 +26,11 @@ public class Brawl extends Combat {
     }
 
     /** Starts a brawl and calulates the winners. */
-    public void start () {
+    public void start() {
         boolean hasSameAmountOfPartyMembers = isOfEqualStats(party1.getNumberOfMembers(), party2.getNumberOfMembers());
         boolean hasSameAveragePartyLevel = isOfEqualStats(party1.getAveragePartyLevel(), party2.getAveragePartyLevel());
-        boolean hasSameSumOfPrimaryAttributes = isOfEqualStats(party1.getSumOfPrimaryAttributes(), party2.getSumOfPrimaryAttributes());
+        boolean hasSameSumOfPrimaryAttributes = isOfEqualStats(party1.getSumOfPrimaryAttributes(),
+                party2.getSumOfPrimaryAttributes());
 
         if (hasSameAmountOfPartyMembers && hasSameAveragePartyLevel && hasSameSumOfPrimaryAttributes) {
             // Tie, represented as null

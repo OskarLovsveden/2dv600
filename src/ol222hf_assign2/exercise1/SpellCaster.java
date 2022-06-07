@@ -15,13 +15,14 @@ public abstract class SpellCaster extends Character {
     private Set<School> schools;
 
     /**
-     * SpellCaster constructor that takes arguments for name, level, classname, attributes and schools.
+     * SpellCaster constructor that takes arguments for name, level, classname,
+     * attributes and schools.
      * 
-     * @param name the spellcaster's name.
-     * @param level the spellcaster's level.
-     * @param className the spellcaster's classname.
+     * @param name       the spellcaster's name.
+     * @param level      the spellcaster's level.
+     * @param className  the spellcaster's classname.
      * @param attributes the spellcaster's attributes.
-     * @param schools the spellcaster's schools.
+     * @param schools    the spellcaster's schools.
      */
     public SpellCaster(String name, int level, ClassName className, Attributes attributes, Set<School> schools) {
         super(name, level, className, attributes);
@@ -32,13 +33,15 @@ public abstract class SpellCaster extends Character {
      * Lets a spellcaster learn a new spell, unless it is already known.
      * 
      * @param spell the spell to be learned.
-     * @throws IllegalArgumentException when the spellcaster's and the spell's schools does not match.
+     * @throws IllegalArgumentException when the spellcaster's and the spell's
+     *                                  schools does not match.
      */
     public void learnSpell(Spell spell) {
         if (schools.contains(spell.getSchool())) {
             spellBook.add(spell);
         } else {
-            throw new IllegalArgumentException(spell + " with school " + spell.getSchool() + " is an invalid spell for this character.");
+            throw new IllegalArgumentException(
+                    spell + " with school " + spell.getSchool() + " is an invalid spell for this character.");
         }
     }
 

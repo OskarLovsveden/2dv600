@@ -18,28 +18,31 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
     @Override
     public void add(int n) {
 
-        if (size() == values.length) resize();
+        if (size() == values.length)
+            resize();
         values[size++] = n;
     }
 
     /**
-     * Inserts integer n at position index. Shifts the element currently at that 
-	 * position (if any) and any subsequent elements to the right.
+     * Inserts integer n at position index. Shifts the element currently at that
+     * position (if any) and any subsequent elements to the right.
      * 
-     * @param n the int to be added.
+     * @param n     the int to be added.
      * @param index an int representing the index at which to add at.
      * @throws IndexOutOfBoundsException
      */
     @Override
     public void addAt(int n, int index) throws IndexOutOfBoundsException {
 
-        if (!checkIndex(index, size())) throw new IndexOutOfBoundsException();
-        if (size() == values.length) resize();
-        
+        if (!checkIndex(index, size()))
+            throw new IndexOutOfBoundsException();
+        if (size() == values.length)
+            resize();
+
         int temp = 0;
         Iterator<Integer> iterator = iterator();
         int i = 0;
-        
+
         while (iterator.hasNext()) {
             int current = iterator.next();
 
@@ -49,30 +52,30 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
             } else if (i > index) {
                 values[i] = temp;
             }
-            
+
             temp = current;
             i++;
         }
 
         // Alternative solution with temporary array.
-        /* 
-        int[] tempArr = new int[values.length];
-        Iterator<Integer> iterator = iterator();
-        int i = 0;
-        
-        while (iterator.hasNext()) {
-            if (i == index) {
-                tempArr[i++] = n;
-                size++;
-            } else {
-                tempArr[i++] = iterator.next();
-            }
-        }
-        
-        values = tempArr;
-        */
+        /*
+         * int[] tempArr = new int[values.length];
+         * Iterator<Integer> iterator = iterator();
+         * int i = 0;
+         * 
+         * while (iterator.hasNext()) {
+         * if (i == index) {
+         * tempArr[i++] = n;
+         * size++;
+         * } else {
+         * tempArr[i++] = iterator.next();
+         * }
+         * }
+         * 
+         * values = tempArr;
+         */
     }
-    
+
     /**
      * Remove integer at position index.
      * 
@@ -81,26 +84,27 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
      */
     @Override
     public void remove(int index) throws IndexOutOfBoundsException {
-        
-        if (!checkIndex(index, size())) throw new IndexOutOfBoundsException();
-        
+
+        if (!checkIndex(index, size()))
+            throw new IndexOutOfBoundsException();
+
         int[] tempArr = new int[values.length];
         Iterator<Integer> iterator = iterator();
         int i = 0;
         int j = 0;
-        
-        while(iterator.hasNext()) {
+
+        while (iterator.hasNext()) {
             if (i++ == index) {
                 iterator.next();
             } else {
                 tempArr[j++] = iterator.next();
             }
         }
-        
+
         values = tempArr;
         size--;
     }
-    
+
     /**
      * Get integer at position index.
      * 
@@ -110,9 +114,10 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
      */
     @Override
     public int get(int index) throws IndexOutOfBoundsException {
-        
-        if (!checkIndex(index, size())) throw new IndexOutOfBoundsException();
-        
+
+        if (!checkIndex(index, size()))
+            throw new IndexOutOfBoundsException();
+
         Iterator<Integer> iterator = iterator();
         int i = 0;
 
@@ -123,13 +128,13 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
                 iterator.next();
             }
         }
-        
+
         return iterator.next();
 
         // Alternative Solution
         // return values[index];
     }
-    
+
     /**
      * Find position of integer n, otherwise return -1.
      * 
@@ -141,9 +146,10 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
 
         Iterator<Integer> iterator = iterator();
         int i = 0;
-    
+
         while (iterator.hasNext()) {
-            if (iterator.next() == n) return i;
+            if (iterator.next() == n)
+                return i;
             i++;
         }
 

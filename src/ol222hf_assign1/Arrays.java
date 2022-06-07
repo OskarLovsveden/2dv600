@@ -22,7 +22,7 @@ public class Arrays {
      */
     public static int average(int[] arr) {
         int sum = 0;
-        
+
         for (int i : arr) {
             sum += i;
         }
@@ -40,8 +40,9 @@ public class Arrays {
         int max = arr[0];
 
         for (int i = 1; i < arr.length; i++) {
-            
-            if (i > max) max = i;
+
+            if (i > max)
+                max = i;
         }
 
         return max;
@@ -51,19 +52,19 @@ public class Arrays {
      * Adds the value n to all numbers in an array.
      * 
      * @param arr An array of integers.
-     * @param n An int to add to each number.
+     * @param n   An int to add to each number.
      * @return An array of integers representing arr modified.
      */
     public static int[] addN(int[] arr, int n) {
         int[] result = new int[arr.length];
-        
+
         for (int i = 0; i < arr.length; i++) {
             result[i] = arr[i] + n;
         }
-        
+
         return result;
     }
-    
+
     /**
      * Reverses the order of an array of numbers.
      * 
@@ -83,14 +84,15 @@ public class Arrays {
     /**
      * Replaces all occurences of a number with a new number in an array of numbers.
      * 
-     * @param arr An array of integers.
+     * @param arr  An array of integers.
      * @param oldN An integer representing the number to be replaced.
      * @param newN An integer representing the number to replace oldN with.
      */
     public static void replaceAll(int[] arr, int oldN, int newN) {
         for (int i = 0; i < arr.length; i++) {
-            
-            if (arr[i] == oldN) arr[i] = newN;
+
+            if (arr[i] == oldN)
+                arr[i] = newN;
         }
     }
 
@@ -104,7 +106,7 @@ public class Arrays {
         int[] clone = arr.clone();
 
         for (int i = 0; i < clone.length; i++) {
-            
+
             for (int j = i + 1; j < clone.length; j++) {
                 int temp = 0;
 
@@ -131,12 +133,13 @@ public class Arrays {
 
         for (int i = 0; i < arr.length; i++) {
 
-            if (arr.length - i < sub.length) return match;
+            if (arr.length - i < sub.length)
+                return match;
 
-            if(sub[0] == arr[i]) {
+            if (sub[0] == arr[i]) {
 
                 for (int j = 0; j < sub.length; j++) {
-                    
+
                     if (sub[j] != arr[i + j]) {
                         match = false;
                         break;
@@ -146,7 +149,7 @@ public class Arrays {
                 }
             }
         }
-        
+
         return match;
     }
 
@@ -155,15 +158,16 @@ public class Arrays {
      * 
      * @param arr1 An array of integers.
      * @param arr2 An array of integers.
-     * @return An array of integers containing the absolute difference numbers for matching indexes.
+     * @return An array of integers containing the absolute difference numbers for
+     *         matching indexes.
      * @throws IllegalArgumentException if arr1 and arr2 is not of equal length.
      */
     public static int[] absDiff(int[] arr1, int[] arr2) throws IllegalArgumentException {
 
-        if (arr1.length != arr2.length){
+        if (arr1.length != arr2.length) {
             String msg = "arr1 and arr2 must be of equal length." +
-                " arr1 contains " + arr1.length + " items and" + 
-                " arr2 contains " + arr2.length + " items.";
+                    " arr1 contains " + arr1.length + " items and" +
+                    " arr2 contains " + arr2.length + " items.";
             throw new IllegalArgumentException(msg);
         }
 
@@ -173,7 +177,7 @@ public class Arrays {
             int difference = arr1[i] - arr2[i];
             result[i] = difference < 0 ? -difference : difference;
         }
-        
+
         return result;
     }
 
@@ -190,7 +194,7 @@ public class Arrays {
 
         StringBuilder sb = new StringBuilder();
         sb.append("[ ");
-        
+
         for (int i = 0; i < arr.length; i++) {
             sb.append(arr[i]);
 
@@ -198,7 +202,7 @@ public class Arrays {
                 sb.append(", ");
             }
         }
-        
+
         sb.append(" ]");
         return sb.toString();
     }

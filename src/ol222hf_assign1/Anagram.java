@@ -5,6 +5,7 @@
 */
 
 package ol222hf_assign1;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -22,15 +23,15 @@ public class Anagram {
     private static final String FILE_NAME = "wordlist";
 
     /** The starting point of the program */
-    public static void run () {
+    public static void run() {
         try {
             String input = promptInput();
             searchForAnagrams(input);
 
-          } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("An error occurred when reading the file.");
             e.printStackTrace();
-          }
+        }
     }
 
     /**
@@ -38,7 +39,7 @@ public class Anagram {
      * 
      * @return A String representing the user input.
      */
-    private static String promptInput () {
+    private static String promptInput() {
         System.out.print("Find anagram for word: ");
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
@@ -50,7 +51,8 @@ public class Anagram {
     /**
      * Searches for anagrams of a word in a wordlist file.
      * 
-     * @param input A String representing the word to use as reference for potential anagrams.
+     * @param input A String representing the word to use as reference for potential
+     *              anagrams.
      * @throws FileNotFoundException if a file does not exist.
      */
     private static void searchForAnagrams(String input) throws FileNotFoundException {
@@ -73,25 +75,25 @@ public class Anagram {
             throw e;
         }
     }
-    
+
     /**
      * Checks if two words are anagrams of each other.
      * 
-     * @param firstWord A String containing a word.
+     * @param firstWord  A String containing a word.
      * @param secondWord A String containing a word.
      * @return true if the two parameters are anagrams, otherwise false.
      */
     private static boolean isAnagram(String firstWord, String secondWord) {
-        if (!(firstWord.length() == secondWord.length())) { 
+        if (!(firstWord.length() == secondWord.length())) {
             return false;
         }
-        
+
         char[] firstWordCharArray = firstWord.toCharArray();
         char[] secondWordCharArray = secondWord.toCharArray();
-        
+
         Arrays.sort(firstWordCharArray);
         Arrays.sort(secondWordCharArray);
-        
+
         return Arrays.equals(firstWordCharArray, secondWordCharArray);
     }
 }

@@ -14,18 +14,17 @@ public class Battle {
      */
     public static void printStatistics(Character[] party) {
         Party p = new Party(party);
-        
-        String statistics =
-            "Party's average level: " + p.getAveragePartyLevel() + "\n" +
-            "Total number of spells: " + p.getSpells() + "\n" +
-            "Total number of mage spells: " + p.getMageSpells() + "\n" +
-            "Total number of cleric spells: " + p.getClericSpells() + "\n" +
-            "Total number of abilities: " + p.getAbilities() + "\n" +
-            "Total number of warrior abilities: " + p.getWarriorAbilities() + "\n" +
-            "Total number of rogue abilities: " + p.getRogueAbilities() + "\n";
+
+        String statistics = "Party's average level: " + p.getAveragePartyLevel() + "\n" +
+                "Total number of spells: " + p.getSpells() + "\n" +
+                "Total number of mage spells: " + p.getMageSpells() + "\n" +
+                "Total number of cleric spells: " + p.getClericSpells() + "\n" +
+                "Total number of abilities: " + p.getAbilities() + "\n" +
+                "Total number of warrior abilities: " + p.getWarriorAbilities() + "\n" +
+                "Total number of rogue abilities: " + p.getRogueAbilities() + "\n";
         System.out.println(statistics);
     }
-    
+
     /**
      * Finds the winners of a fight between two parties of characters.
      * 
@@ -41,9 +40,10 @@ public class Battle {
         brawl.start();
         return brawl.getWinners();
     }
-    
+
     /**
-     * Finds the winner in a fight between two characters of the same type, i.e Mage vs. Mage, etc.
+     * Finds the winner in a fight between two characters of the same type, i.e Mage
+     * vs. Mage, etc.
      * 
      * @param c1 a character.
      * @param c2 a character.

@@ -14,7 +14,7 @@ public class Attribute {
      * Class constructor for an attribute.
      * 
      * @param attributeName the name of the attribute.
-     * @param value the value of the attribute.
+     * @param value         the value of the attribute.
      */
     public Attribute(AttributeName attributeName, int value) {
         this.attributeName = attributeName;

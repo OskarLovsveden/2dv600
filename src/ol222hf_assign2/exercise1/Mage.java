@@ -14,33 +14,31 @@ public class Mage extends SpellCaster {
     /**
      * Mage constructor that takes arguments for name and level.
      * 
-     * @param name The mage's name.
+     * @param name  The mage's name.
      * @param level The mage's level.
      */
-    public Mage (String name, int level) {
+    public Mage(String name, int level) {
         super(
-            name,
-            level,
-            ClassName.MAGE,
-            new Attributes(),
-            Set.<School>of(School.EVOCATION, School.ALTERATION)
-        );
+                name,
+                level,
+                ClassName.MAGE,
+                new Attributes(),
+                Set.<School>of(School.EVOCATION, School.ALTERATION));
     }
-    
+
     /**
      * Mage constructor that takes arguments for name, level and attributes.
      * 
-     * @param name the mage's name.
-     * @param level the mage's level.
+     * @param name       the mage's name.
+     * @param level      the mage's level.
      * @param attributes the mage's attributes.
      */
-    public Mage (String name, int level, Attributes attributes) {
+    public Mage(String name, int level, Attributes attributes) {
         super(
-            name,
-            level,
-            ClassName.MAGE,
-            attributes,
-            Set.<School>of(School.EVOCATION, School.ALTERATION)
-        );
+                name,
+                level,
+                ClassName.MAGE,
+                attributes,
+                Set.<School>of(School.EVOCATION, School.ALTERATION));
     }
 }

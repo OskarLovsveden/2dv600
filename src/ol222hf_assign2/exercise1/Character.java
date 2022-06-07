@@ -13,11 +13,12 @@ public abstract class Character {
     private Attributes attributes;
 
     /**
-     * Character constructor that takes arguments for name, level, classname and attributes.
+     * Character constructor that takes arguments for name, level, classname and
+     * attributes.
      * 
-     * @param name the character's name.
-     * @param level the character's level.
-     * @param className the character's classname.
+     * @param name       the character's name.
+     * @param level      the character's level.
+     * @param className  the character's classname.
      * @param attributes the character's attributes.
      */
     public Character(String name, int level, ClassName className, Attributes attributes) {
@@ -43,13 +44,14 @@ public abstract class Character {
     public int getPrimaryAttribute() {
         return attributes.getPrimaryAttributeValueOf(className);
     }
-    
+
     /** Gets primary attribute name. */
     public String getPrimaryAttributeName() {
         return attributes.getPrimaryAttributeNameOf(className);
     }
 
     public String toString() {
-        return "name: " + name + ", level: " + level + ", primary attribute: " + getPrimaryAttributeName() + " " + getPrimaryAttribute();
+        return "name: " + name + ", level: " + level + ", primary attribute: " + getPrimaryAttributeName() + " "
+                + getPrimaryAttribute();
     }
 }

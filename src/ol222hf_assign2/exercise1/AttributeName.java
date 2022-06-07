@@ -17,6 +17,7 @@ public enum AttributeName {
 
     /**
      * Class constructor for the AttributeName enum type.
+     * 
      * @param name the name / text representation of the attribute name.
      */
     AttributeName(String name) {

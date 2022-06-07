@@ -23,7 +23,7 @@ public enum Ability {
     /**
      * Class constructor for the enum type Ability.
      * 
-     * @param name the name of the ability.
+     * @param name        the name of the ability.
      * @param proficiency a proficiency that is connected to the ability.
      */
     private Ability(String name, Proficiency proficiency) {

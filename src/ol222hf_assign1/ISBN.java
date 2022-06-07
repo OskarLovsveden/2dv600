@@ -5,10 +5,12 @@
 */
 
 package ol222hf_assign1;
+
 import java.util.Scanner;
 
 /**
- * Class Description: Read and calculate an ISBN number using the first 9 digits.
+ * Class Description: Read and calculate an ISBN number using the first 9
+ * digits.
  * 
  * @version 1 01 Sept 2021
  * @author Oskar Lövsveden
@@ -64,10 +66,11 @@ public class ISBN {
 
         return sum;
     }
-    
+
     /**
      * Takes an int and formats it to a string with 9 characters.
-     * If the int is < 9 digits long, it pads it with zeros on the left up to nine characters.
+     * If the int is < 9 digits long, it pads it with zeros on the left up to nine
+     * characters.
      * If the int is 9 digits long, it is left as is.
      * Do not use ints with 9 > digits.
      * 
@@ -77,12 +80,14 @@ public class ISBN {
     private static String inputToString(int input) {
         return String.format("%09d", input);
     }
-    
+
     /**
      * Calculates the checksum of the first 9 digits of an ISBN.
      * 
-     * @param sum A int representing the calculated sum of the first 9 digits of an ISBN.
-     * @return A string. If checksum == 10 it returns "X", else it returns the checksum as a string.
+     * @param sum A int representing the calculated sum of the first 9 digits of an
+     *            ISBN.
+     * @return A string. If checksum == 10 it returns "X", else it returns the
+     *         checksum as a string.
      */
     private static String getTenthDigit(int sum) {
         int d10 = sum % MODULUS_CHECK;

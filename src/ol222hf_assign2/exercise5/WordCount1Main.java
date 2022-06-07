@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 
 public class WordCount1Main {
-    /** 
+    /**
      * Reads the words.txt file and loops through each word.
      * Each word is used for a new Word instance.
      * Each Word instance is added to a HashSet and a TreeSet.
@@ -27,22 +27,22 @@ public class WordCount1Main {
 
             File file = new File("words.txt");
             Scanner reader = new Scanner(file);
-            
+
             while (reader.hasNext()) {
                 Word word = new Word(reader.next());
                 wordHSet.add(word);
                 wordTSet.add(word);
             }
-            
+
             reader.close();
-            
+
             for (Word word : wordTSet) {
                 System.out.println(word);
             }
 
-            System.out.println("The size of the word HashSet: "+wordHSet.size());
-            System.out.println("The size of the word TreeSet: "+wordTSet.size());
-            
+            System.out.println("The size of the word HashSet: " + wordHSet.size());
+            System.out.println("The size of the word TreeSet: " + wordTSet.size());
+
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred when trying to access a file.");
             e.printStackTrace();
