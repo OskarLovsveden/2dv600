@@ -62,7 +62,7 @@ Present a Deterministic Finite Automaton and a Regular Expression for the langua
 
 ------
 
-Regex → (1(021|35*1)\*(02|3(4|5\*4?)))?
+Regex → (1(021|35*1)\*(02|35\*4?))?
 
 ![ex2.drawio](./ex2.drawio.png) 
 
@@ -127,6 +127,17 @@ a + b * c
 
 (a + b) * c
 
+![ex4_b.drawio](C:\www\school\2DV600\src\ol222hf_assign4\ex4_b.drawio.png) 
+
 ### c)
 
 a * a + b * b
+
+![ex4_c.drawio](C:\www\school\2DV600\src\ol222hf_assign4\ex4_c.drawio.png) 
+
+## Exercise 5
+
+Show that the grammar below is ambiguous:
+S → bS | Sb | a
+
+![ex5.drawio](C:\www\school\2DV600\src\ol222hf_assign4\ex5.drawio.png) 
