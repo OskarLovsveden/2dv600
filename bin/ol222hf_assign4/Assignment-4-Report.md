@@ -127,13 +127,13 @@ a + b * c
 
 (a + b) * c
 
-![ex4_b.drawio](./ex4_b.drawio.png) 
+![ex4_b.drawio](./ex4_b.drawio.png)
 
 ### c)
 
 a * a + b * b
 
-![ex4_c.drawio](./ex4_c.drawio.png) 
+![ex4_c.drawio](./ex4_c.drawio.png)
 
 ## Exercise 5
 
